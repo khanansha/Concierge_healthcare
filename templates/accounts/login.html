@@ -1,0 +1,115 @@
+
+{% load static %}
+<!DOCTYPE html>
+<html>
+      <head>
+            <!-- Required meta tags -->
+            <meta charset="utf-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+            <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+            <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+            <link href="{% static 'css/main-style.css' %}" rel="stylesheet">
+            <title>Europ Healthcare</title>
+      </head>
+      <body class="login-page">
+            <div class="login-main">
+                  <div class="left-area">
+                        <div class="logos hidden-sm hidden-xs">
+                              <div class="logo-1"><a href="#"><img src="{% static 'img/home-care.svg' %}" alt="home-care-logo" class="img-responsive"></a></div>
+                              <div class="logo-2"><a href="#"><img src="{% static 'img/logo.svg' %}" alt="europ-logo" class="img-responsive"></a></div>
+                              
+                        </div>
+                        
+                        <div class="login-img">
+                              <figure>
+                                    <img src="{% static 'img/family.svg' %}" class="img-responsive" alt="login-image">
+                              </figure>
+                        </div>
+                  </div>
+                  <!-- login form  -->
+                  <div class="right-area">
+                        
+                        <div class="form-login">
+                              <h3 class="text-center ">Log in to your homecare account</h3>
+                              <!-- after password change -->
+                              <h3 class="text-center hidden">Successfully changed your password! Log in now</h3>
+                              <!-- after password change -->
+                                {% include 'partials/_alerts.html' %}
+                              <form class="login-form-new" action="{% url 'login' %}" method="POST">
+                                    {% csrf_token %}
+                                    <div class="form-group">
+                                          <label for="username">Email</label>
+                                          <input type="username" class="form-control " id="username" name="username" placeholder="Enter email" required>
+                                          <!-- add class error  for input to be highlighted -->
+                                          <div class="error-msg clearfix hide">
+                                                <p class="pull-right">Enter Username</p>
+                                          </div>
+                                          <div class="error-msg clearfix hide">
+                                                <p class="pull-right">Incorrect username</p>
+                                          </div>
+                                    </div>
+                                    <div class="form-group">
+                                          <label for="password">Password</label>
+                                          <input type="password" class="form-control" id="password" placeholder="Enter password" name="password" required>
+                                          <!-- add class error  for input to be highlighted-->
+                                          <div class="error-msg clearfix hide">
+                                                <p class="pull-right">Enter Password</p>
+                                          </div>
+                                          <div class="error-msg clearfix hide">
+                                                <p class="pull-right">Incorrect password</p>
+                                          </div>
+                                    </div>
+                                    <div class="clearfix">
+                                          <div class="pull-left">
+                                                <label class="remember">
+                                                      <span>Remember me</span>
+                                                      <input type="checkbox" checked="checked">
+                                                      <span class="checkmark"></span>
+                                                </label>
+                                          </div>
+                                          <div class="pull-right">
+                                                <a href="#" class="forgot-password">Forgot password?</a>
+                                          </div>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-primary log-in-btn">Login</button>
+                                    <p class="text-center member-login-page">Don’t have an account?<a href="#" class="signup-now">Sign up now.</a></p>
+                              </form>
+                              <div class="logo-mobile-only hidden-lg hidden-md visible-sm visible-xs">
+                                    <div class="logos ">
+                                          <div class="logo-1"><a href="#"><img src="{% static 'img/home-care.svg' %}" alt="home-care-logo" class="img-responsive"></a></div>
+                                          <div class="logo-2"><a href="#"><img src="{% static 'img/logo.svg' %}" alt="europ-logo" class="img-responsive"></a></div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- login form -->
+                  <!-- forgot password -->
+                  <div class="right-area hide">
+                        <div class="form-login">
+                              <h3 class="text-center">Forgot password?</h3>
+                              <form class="forgotpassword-email">
+                                    <p class="text-center">Provide us your registered email address and we will send
+                                    you an email with instructions to reset your password.</p>
+                                    <div class="form-group">
+                                          <label for="username">Enter your registered email address</label>
+                                          <input type="text" class="form-control " id="emailaddress" placeholder="Enter email address">
+                                    </div>
+                                    <button type="submit" class="btn btn-primary submit-btn">Submit</button>
+                              </form>
+                              <div class="logo-mobile-only hidden-lg hidden-md visible-sm visible-xs">
+                                    <div class="logos ">
+                                          <div class="logo-1"><a href="#"><img src="img/home-care.svg" alt="home-care-logo" class="img-responsive"></a></div>
+                                          <div class="logo-2"><a href="#"><img src="img/logo.svg" alt="europ-logo" class="img-responsive"></a></div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
+                  <!-- forgot password -->
+            </div>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+            <script src="{% static 'js/custom.js' %}"></script>
+      </body>
+</html>

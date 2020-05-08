@@ -1,0 +1,151 @@
+{% extends 'base.html' %}
+ {% load static %}
+
+
+{% block content %}
+
+
+	<div class="super_container_inner">
+		<div class="super_overlay"></div>
+
+		<!-- Home -->
+
+		<div class="home">
+			<div class="home_container d-flex flex-column align-items-center justify-content-end">
+				<div class="home_content text-center">
+					<div class="home_title">Product Page</div>
+					<div class="breadcrumbs d-flex flex-column align-items-center justify-content-center">
+						<ul class="d-flex flex-row align-items-start justify-content-start text-center">
+							<li><a href="#">Home</a></li>
+							<li><a href="category.html">Woman</a></li>
+							<li>New Products</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Product -->
+
+		<div class="product">
+			<div class="container">
+				<div class="row">
+					
+					<!-- Product Image -->
+					<div class="col-lg-6">
+						<div class="product_image_slider_container">
+							<div id="slider" class="flexslider">
+								<ul class="slides">
+									{% for p_img in pro_images %}
+										<li>
+										
+											<div><img src="{{ p_img.images.url}}" /></div>
+										</li>
+										{% endfor%}
+									
+								</ul>
+							</div>
+							<div class="carousel_container">
+								<div id="carousel" class="flexslider">
+									<ul class="slides">
+									{% for p_img in pro_images %}
+										<li>
+										
+											<div><img src="{{ p_img.images.url}}" /></div>
+
+										</li>
+										{% endfor%}
+										
+									</ul>
+								</div>
+								<div class="fs_prev fs_nav disabled"><i class="fa fa-chevron-up" aria-hidden="true"></i></div>
+								<div class="fs_next fs_nav"><i class="fa fa-chevron-down" aria-hidden="true"></i></div>
+							</div>
+						</div>
+					</div>
+
+
+					<!-- Product Info -->
+					<div class="col-lg-6 product_col">
+						<div class="product_info">
+                        {% for product in product %}
+						<form action="{% url "cart_add" product.id %}" method="post">
+                            {% csrf_token %}
+                            {{ cart_product_form }} 
+							<input type="submit" value="add to cart" class="btn btn-primary">
+						</form>
+							<div class="product_name">{{product.name}}</div>
+							<div class="product_category">In <a href="category.html">{{product.category}}</a></div>
+							<div class="product_rating_container d-flex flex-row align-items-center justify-content-start">
+								<div class="rating_r rating_r_4 product_rating"><i></i><i></i><i></i><i></i><i></i></div>
+								<div class="product_reviews">4.7 out of (3514)</div>
+								<div class="product_reviews_link"><a href="#">Reviews</a></div>
+							</div>
+							<div class="product_price">{{product.price}}</div>
+							<div class="product_size">
+								<div class="product_size_title">Select Size</div>
+								<ul class="d-flex flex-row align-items-start justify-content-start">
+								{% for size in product.sizes %}
+								<!-- for var_name in array -->
+
+									<li>
+									
+										<input type="radio" id="radio_1" disabled name="product_radio" class="regular_radio radio_1">
+										<label for="radio_1">{{size}}</label>
+									</li>
+								{% endfor %}
+								</ul>
+							</div>
+							<div class="product_text">
+								<p>{{product.desc}}.</p>
+							</div>
+							<div class="product_buttons">
+								<div class="text-right d-flex flex-row align-items-start justify-content-start">
+									<div class="product_button product_fav text-center d-flex flex-column align-items-center justify-content-center">
+										<div><div><img src="{% static 'images/heart_2.svg' %}" class="svg" alt=""><div>+</div></div></div>
+									</div>
+									<div class="product_button product_cart text-center d-flex flex-column align-items-center justify-content-center">
+									<a href ={% url 'cart_add' product.id %}>
+									 
+										{% comment %} {{cart_product_form}} {% endcomment %}
+										<div><div><img  src="{% static 'images/cart.svg'%}" class="svg"  alt=""><div>+</div></div></a></div>
+                            	
+									</div>
+								</div>
+							</div>							
+						</div>
+                        {% endfor %}
+					</div>
+				</div>
+                
+			</div>
+		</div>
+
+		<!-- Boxes -->
+
+		<div class="boxes">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6">
+						<div class="box d-flex flex-row align-items-center justify-content-start">
+							<div class="mt-auto"><div class="box_image"><img src="{% static 'images/boxes_1.png'%}" alt=""></div></div>
+							<div class="box_content">
+								<div class="box_title">Size Guide</div>
+								<div class="box_text">Phasellus sit amet nunc eros sed nec tellus.</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-lg-6 box_col">
+						<div class="box d-flex flex-row align-items-center justify-content-start">
+							<div class="mt-auto"><div class="box_image"><img src="{% static 'images/boxes_2.png'%}" alt=""></div></div>
+							<div class="box_content">
+								<div class="box_title">Shipping</div>
+								<div class="box_text">Phasellus sit amet nunc eros sed nec tellus.</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{% endblock %}

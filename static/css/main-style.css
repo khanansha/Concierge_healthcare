@@ -1,0 +1,702 @@
+@charset "UTF-8";
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.clrflt{
+  clear: both;
+}
+
+/*common css*/
+a:focus,a:hover,a,a:visited,input{
+  outline:none;
+  text-decoration: none;
+}
+li,ul{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+input:focus,.form-control:focus,
+.btn.active.focus, 
+.btn.active:focus, 
+.btn.focus, 
+.btn:active.focus, 
+.btn:active:focus, 
+.btn:focus,{
+  outline: 0;
+  box-shadow: none;
+  border-bottom: 1px solid #ccc;
+
+}
+.form-control:focus{
+  border-color: #ccc;
+  box-shadow: none;
+}
+
+body{
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 14px !important;
+  color: #58595b;
+}
+
+
+label,p,a,a:hover{
+  color: #58595b;
+  font-weight: 500!important;
+}
+
+img{
+  max-width: 100%;
+}
+h1 {
+  font-size: 28px!important;
+  font-weight: 500!important;
+}
+h2{
+  font-size: 24px!important;
+  font-weight: 500!important;
+}
+h3{
+  font-size: 20px!important;
+  font-weight: 600!important;
+  margin-top: 10px;
+}
+h4{
+  font-size: 18px!important;
+  font-weight: 500!important;
+}
+h5{
+  font-size: 16px !important;
+  font-weight: 500!important;
+}
+h6{
+  font-size: 13px !important;
+  font-weight: 900 !important;
+  color: #414042 !important;
+}
+.form-control[disabled], .form-control[readonly], fieldset[disabled] .form-control {
+  background-color: transparent;
+}
+.btn-primary{
+  background-color: #ef3e42;
+  border: 1px solid transparent;
+  border-radius: 0;
+  display: block;
+  max-width: 130px;
+  padding: 10px 20px;
+  width: 100%;
+}
+.btn-primary{
+  margin: 0 auto;
+}
+.btn-primary.active.focus,
+.btn-primary.active:focus,
+.btn-primary.active:hover,
+.btn-primary:active.focus,
+.btn-primary:active:focus,
+.btn-primary:active:hover,
+.btn-primary:active,
+.btn-primary:focus,
+.btn-primary:hover{
+  background-color: #fff;
+  color: #ef3e42;
+  outline: 0;
+  border: 1px solid #ef3e42;
+  box-shadow: none;
+}
+.open>.dropdown-toggle.btn-primary,
+.dropdown .btn-primary:hover,
+.dropdown .btn-primary:focus{
+  border-color: #ccc;
+  border: none;
+}
+
+.open>.dropdown-toggle.btn-primary.focus,
+.open>.dropdown-toggle.btn-primary:focus,
+.open>.dropdown-toggle.btn-primary:hover{
+  background: transparent;
+  color: #ccc;
+  border: none;
+  border-bottom: 1px solid #ccc;
+}
+/* Hide the browser's default checkbox */
+.remember span{
+  display: block;
+  margin: 0 0 0 30px;
+}
+
+.remember input{
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+/* Create a custom checkbox */
+.remember .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0px;
+  height: 15px;
+  width: 15px;
+  margin: 0;
+  background-color: transparent;
+  border: 1px solid #555;
+  border-radius: 3px;
+}
+
+/* On mouse-over, add a grey background color */
+.remember:hover input ~ .checkmark {
+  background-color: #fff;
+}
+
+/* When the checkbox is checked, add a blue background */
+.remember input:checked ~ .checkmark {
+  background-color: #ef3e42;
+  border: none;
+}
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.remember .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+/* Show the checkmark when checked */
+.remember input:checked ~ .checkmark:after {
+  display: block;
+}
+
+/* Style the checkmark/indicator */
+.remember .checkmark:after {
+  left: 4px;
+  top: 2px;
+  width: 6px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}  
+.modal-fixed{
+  width: 500px;
+  margin: auto;
+  max-width: 90%;
+  text-align: center;
+}
+.modal-fixed .modal-dialog{
+  max-width: 100%;
+}
+.modal-fixed .modal-body {
+  padding: 50px 60px;
+  min-height: 350px;
+}
+.modal-fixed .modal-content{
+  border: none;
+  box-shadow: none !important;
+}
+.dropdown-container{
+  position: relative;
+}
+.dropdown-container select {
+  width: 100%;
+  height: auto;
+  cursor: pointer;
+  border-radius: 0;
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #d1d3d4;
+  color: #ccc;
+  padding: 5px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  transition: color 0.3s ease, background-color 0.3s ease, border-bottom-color 0.3s ease;
+}
+/* For IE <= 11 */
+.dropdown-container select::-ms-expand {
+  display: none; 
+}
+.dropdown-container .select-icon {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 30px;
+  height: 30px;
+  pointer-events: none;
+  padding-left: 5px;
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+.dropdown-container select option {
+  margin: 40px;
+  background: #f3eae5;
+  color: #333;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.4);
+  border-bottom: 1px solid #fff;
+}
+.dropdown-container option:first-child{
+  color: #ccc;
+}
+.dropdown-container select:focus,.dropdown-container select option:focus {
+  outline: 0;
+}
+
+/*common css*/
+
+/*login page*/
+.logo-1 a,.logo-2 a{
+  max-width: 140px;
+  width: 100%;
+  display: block;
+  padding: 0 20px;
+}
+.logo-1 a{
+  max-width: 120px;
+}
+.logo-2{
+  position: relative;
+}
+.logo-2:after{
+  content: "";
+  border: 0.5px solid #d1d3d4;
+  height: 100%;
+  width: 1px;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+.logos{
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.login-img figure{
+  max-width: 400px;
+  width: 100%;
+  margin: 40px auto 0;
+}
+.login-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 40px;
+}
+
+.form-login label,.form-login a.signup-now,.form-signup label,.form-signup a.signup-now{
+   font-weight: 600!important;
+}
+.form-login label,.form-signup label{
+  position: relative;
+  margin-bottom: 0;
+  cursor: pointer;
+}
+
+.form-login input::-webkit-input-placeholder,.form-signup input::-webkit-input-placeholder{ /* Edge */
+  color:#d1d3d4;
+}
+
+.form-login input:-ms-input-placeholder,.form-signup input:-ms-input-placeholder { /* Internet Explorer 10-11 */
+  color:#d1d3d4;
+}
+
+.form-login input::placeholder,.form-signup input::placeholder {
+  color:#d1d3d4;
+}
+textarea.form-control::-webkit-input-placeholder {
+  color: #ccc;
+}
+
+textarea.form-control:-moz-placeholder { /* Firefox 18- */
+  color: #ccc;
+}
+
+textarea.form-control::-moz-placeholder {  /* Firefox 19+ */
+ color: #ccc; 
+}
+
+textarea.form-control:-ms-input-placeholder {
+  color: #ccc;  
+}
+
+textarea.form-control::placeholder {
+  color: #ccc;  
+}
+
+
+.login-main .left-area {
+  width: 50%;
+  background-size: 100%;
+  background-position: bottom;
+  height: 100vh;
+}
+.login-main .left-area, .login-main .right-area {
+  max-width: 50%;
+  width: 100%;
+}
+.form-login,.form-signup {
+  background-color: #f8f8f9;
+  padding: 50px 10px 20px;
+  border-radius: 5px;
+  min-height: 675px;
+  max-width: 600px;
+  margin: 8% auto 0;
+}
+.form-login {
+  min-height: 576px;
+}
+.form-login.reset-form {
+  padding: 135px 10px 135px;
+}
+.login-form-new input,.forgotpassword-email input,.signup-form-new input,.form-new input{
+  background-color: transparent;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  box-shadow: none;
+  border-radius: 0;
+  padding: 0;
+}
+.login-img{
+  margin: 15% auto 0;
+}
+.login-form-new,.signup-form-new,.form-new{
+  margin: 50px 0 0;
+  padding: 0 120px;
+}
+
+.login-form-new .form-group ,.signup-form-new .form-group,.form-new .form-group{
+  margin-bottom: 30px;
+}
+.log-in-btn,.save-btn,.submit-btn,.create-btn{
+  margin: 60px auto 30px;
+}
+.form-login a.signup-now,.form-signup a.signup-now{
+  padding: 0 5px;
+}
+.error-msg p{
+  color:#ef3e42;
+}
+input.error {
+  border-bottom: 1px solid #ef3e42;
+}
+.forgotpassword-email{
+  padding: 0 120px;
+}
+.forgotpassword-email p{
+  padding: 30px 0 70px;
+}
+.reset-link-alert{
+  padding: 0 80px;
+}
+/*login page*/
+/*signup page*/
+.form-signup {
+  padding: 10px 10px 20px;
+  min-height: 600px;
+  max-width: 700px;
+  margin: 4% auto 0;
+}
+.signup-form-new,.form-new{
+  padding: 0 50px;
+}
+.signup-form-new .dropdown .btn,.form-new .dropdown .btn{
+  background: transparent;
+  width: 100%;
+  max-width: 100%;
+  border: none;
+  border-bottom: 1px solid #ccc;
+  text-align: left;
+  color: #d1d3d4;
+  padding: 10px 0 0;
+}
+.signup-form-new .dropdown .btn span,.form-new .dropdown .btn span{
+  float: right;
+  color: #58595b;
+  font-size: 12px;
+}
+.signup-form-new .dropdown ul.dropdown-menu,.form-new .dropdown ul.dropdown-menu{
+  width: 100%;
+  background-color: #f3eae5;
+  border: none;
+  top: 95%;
+}
+.signup-form-new .dropdown ul.dropdown-menu li,.form-new .dropdown ul.dropdown-menu li{
+  border-bottom: 1px solid #fff;
+  padding: 8px 0px;
+}
+.signup-form-new .dropdown ul.dropdown-menu li:last-child,.form-new .dropdown ul.dropdown-menu li:last-child{
+  border-bottom: none;
+}
+#otp form input{
+  width: 30px;
+  height: 30px;
+  background-color: #e6e6e5;
+  border-radius: 7px;
+  box-shadow: none;
+  border: none;
+  margin: 0 10px;
+  text-align: center;
+}
+#otp form input:first-child{
+  margin-left: 0;
+}
+#otp form input:last-child{
+  margin-right: 0;
+}
+#otp form{
+  padding:35px;
+}
+#otp form .resend-otp{
+  margin: 15px 0;
+}
+#verification-otp h3{
+  font-weight: 300 !important;
+}
+#verification-otp figure{
+  width: 100%;
+  max-width: 50px;
+  margin: 50px auto;
+}
+/*signup page*/
+/*medical details form*/
+.main-div .navbar-inverse {
+  background-color: #f7f1ee;
+  border: none;
+  padding: 15px 20px;
+  margin-bottom: 0;
+}
+.main-div .logo-1 a, .logo-2 a {
+  max-width: 120px;
+  width: 100%;
+  display: block;
+  padding: 0 20px;
+}
+.main-div .logo-1 a {
+  max-width: 100px;
+}
+.medical-detail-info{
+  display: flex;
+  justify-content: inherit;
+  align-items: center;
+}
+.medical-detail-info figure{
+  max-width: 70px;
+  height: auto;
+  margin: 0 30px 0 10px;
+}
+.medical-detail-main{
+  border: 2px solid #e7e8e9;
+  border-radius: 5px;
+  padding: 20px;
+  margin: 50px 0;
+  position: relative;
+}
+.medical-detail-main .form-new {
+  padding: 0 30px;
+  margin: 30px 0 0;
+}
+.medical-detail-main .form-new textarea.form-control {
+    height: 200px;
+    resize: none;
+    background-color: #f7f1ee;
+    border: none;
+    box-shadow: none;
+    padding: 10px 20px;
+}
+.medical-detail-main .form-new .input-group-addon {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    border-radius: 0;
+}
+.medical-details-form .form-new .submit-btn {
+    margin: 30px auto 30px;
+}
+.skip-link{
+  margin-top: -75px;
+}
+.medical-details-form .form-new label{
+  margin-bottom: 15px;
+}
+/*medical details form*/
+
+
+
+/*1366*/
+@media only screen  and (max-width : 1366px){
+/*login page*/
+.login-main {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 20px 40px;
+}
+/*login page*/
+}
+
+/*1280*/
+@media only screen  and (max-width : 1280px){
+/*login page*/
+.login-main {
+  padding: 20px 40px;
+}
+/*login page*/
+
+
+}
+
+/*1024*/
+@media only screen  and (max-width : 1024px){
+/*login page*/
+.login-main {
+  padding: 40px;
+}
+
+.login-form-new,.signup-form-new,.form-new{
+  margin: 80px 0 0;
+  padding: 0 90px;
+}
+.form-login,.form-signup {
+  min-height: 550px;
+}
+/*login page*/
+}
+
+
+/*992*/
+@media only screen  and (max-width : 992px){
+/*login page*/
+.logos {
+  justify-content: center;
+}
+body.login-page{
+  overflow: auto; 
+}
+
+.login-main{
+  display: block;
+}
+.login-main .left-area, .login-main .right-area{
+  max-width: 100%;
+  width: 100%;
+  height: auto;
+}
+.form-login,.form-signup{
+  background: transparent;
+  max-width: 100%;
+  padding: 0
+}
+.login-form-new,.forgotpassword-email,.signup-form-new,.form-new {
+  padding: 0 20px;
+}
+.login-img {
+  margin: 5% auto 0;
+}
+.reset-link-alert{
+  margin: 40px 0 0;
+}
+/*login page*/
+/*signup page*/
+.modal-fixed .modal-content{
+  border-radius: 0;
+}
+.modal-fixed .modal-body {
+  padding: 50px 22px;
+}
+#otp form {
+    padding: 55px 0 35px;
+}
+/*signup page*/
+/*medical details page*/
+.medical-detail-info{
+  display: block;
+  text-align: center;
+}
+.medical-detail-info figure{
+  margin: 0 auto;
+  max-width: 100px;
+}
+.medical-detail-main .form-new{
+  padding: 0;
+  margin: 50px 0 0;
+}
+.main-div .navbar-inverse{
+  padding: 15px 10px;
+}
+.main-div .logos {
+    justify-content: start;
+}
+.main-div .logo-1 a, .logo-2 a {
+    max-width: 80px;
+    padding: 0 10px;
+}
+.main-div .logo-1 a {
+    max-width: 60px;
+}
+.skip-link{
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  margin-top: 0;
+}
+
+/*medical details page*/
+}
+
+/*823*/
+@media only screen  and (max-width : 823px) and (orientation : landscape) {}
+
+/*768*/
+@media only screen  and (max-width : 768px){}
+
+
+/*767*/
+@media only screen  and (max-width : 767px){}
+
+
+/*480*/
+@media only screen  and (max-width : 480px) {
+/*signup page*/
+#otp form input {
+    margin: 0 7px;
+}
+/*signup page*/
+}
+
+/*568*/
+@media only screen  and (max-width : 568px){}
+
+/*360*/
+@media only screen  and (max-width : 360px){
+/*login page*/
+.login-main {
+    padding: 40px 20px;
+}
+/*login page*/
+/*signup page*/
+#otp form input {
+  margin: 0 5px;
+}
+/*signup page*/
+}
+
+
+
+
+/*320*/
+@media only screen  and (max-width : 320px){
+  .modal-fixed .modal-body {
+    padding: 50px 15px;
+}
+#otp form input {
+    margin: 0 3px;
+}
+}
