@@ -38,11 +38,20 @@
                      <div class="skip-link  pull-right">
                         <a href="#">Skip</a>
                      </div>
-                    <div class="row">
-                        <div class="col-md-4 col-xs-12">
+                     <div class="row">
+                      <div class="col-md-4 col-xs-12">
+                           <label>Date of Birth </label>
+                           <div class="form-group">
+                              <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                 <input class="form-control" type="text" name="DOB" readonly />
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                              </div>
+                           </div>
+                        </div>
+                        {% comment %} <div class="col-md-4 col-xs-12">
                            <label for="DOB">DOB</label>
                         <input type="date" name="DOB" class="form-control" required>
-                        </div>
+                        </div>  {% endcomment %}
                         <div class="col-md-4 col-xs-12">
                            <div class="form-group">
                               <label for="Height">Height (in inches)</label>

@@ -27,6 +27,7 @@
                               </figure>
                         </div>
                   </div>
+                   {% include 'partials/_alerts.html' %}
                   <!-- login form  -->
                   <div class="right-area">
                         
@@ -34,8 +35,8 @@
                               <h3 class="text-center ">Log in to your homecare account</h3>
                               <!-- after password change -->
                               <h3 class="text-center hidden">Successfully changed your password! Log in now</h3>
-                              <!-- after password change -->
-                                {% include 'partials/_alerts.html' %}
+                            <!-- after password change -->
+                                {% comment %} {% include 'partials/_alerts.html' %} {% endcomment %}
                               <form class="login-form-new" action="{% url 'login' %}" method="POST">
                                     {% csrf_token %}
                                     <div class="form-group">
@@ -74,7 +75,7 @@
                                     </div>
                                     
                                     <button type="submit" class="btn btn-primary log-in-btn">Login</button>
-                                    <p class="text-center member-login-page">Don’t have an account?<a href="#" class="signup-now">Sign up now.</a></p>
+                                    <p class="text-center member-login-page">Don’t have an account?<a href="{% url 'signup' %}" class="signup-now">Sign up now.</a></p>
                               </form>
                               <div class="logo-mobile-only hidden-lg hidden-md visible-sm visible-xs">
                                     <div class="logos ">
@@ -84,6 +85,8 @@
                               </div>
                         </div>
                   </div>
+
+                  
                   <!-- login form -->
                   <!-- forgot password -->
                   <div class="right-area hide">
@@ -113,3 +116,10 @@
             <script src="{% static 'js/custom.js' %}"></script>
       </body>
 </html>
+<script>
+setTimeout(function() {
+
+    $('#alert-message').fadeOut('slow');
+  
+  }, 3000);
+  </script>
