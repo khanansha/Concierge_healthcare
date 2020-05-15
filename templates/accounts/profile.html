@@ -24,6 +24,7 @@
                </div>
             </div>
          </nav>
+         
          <div class="container">
             <div class="medical-detail-main">
                <div class="medical-detail-info clearfix">
@@ -32,18 +33,22 @@
                   </figure>
                   <h3>Please provide your personal and medical details.</h3>
                </div>
+               {% include 'partials/_alerts.html' %}
+
                <div class="medical-details-form">
                   <form class="form-new" action="{% url 'profile' %}" method="POST">
                   {% csrf_token %}
                      <div class="skip-link  pull-right">
                         <a href="#">Skip</a>
                      </div>
+                     {% for profile in profile %}
+
                      <div class="row">
                       <div class="col-md-4 col-xs-12">
                            <label>Date of Birth </label>
                            <div class="form-group">
                               <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
-                                 <input class="form-control" type="text" name="DOB" readonly />
+                                 <input class="form-control" type="text" name="DOB" value="{{ profile.DOB }}" readonly />
                                  <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
                               </div>
                            </div>
@@ -55,13 +60,13 @@
                         <div class="col-md-4 col-xs-12">
                            <div class="form-group">
                               <label for="Height">Height (in inches)</label>
-                              <input type="text" class="form-control" name="Height" id="height">
+                              <input type="text" class="form-control" name="Height" value="{{ profile.Height }}" id="height">
                            </div>
                         </div>
                         <div class="col-md-4 col-xs-12">
                            <div class="form-group">
                               <label for="Weight">Weight (in KG)</label>
-                              <input type="text" class="form-control" name="Weight" id="Weight">
+                              <input type="text" class="form-control" name="Weight" value="{{ profile.Weight }}" id="Weight">
                            </div>
                         </div>
                         <div class="col-md-4 col-xs-12">
@@ -69,15 +74,15 @@
                               <label for="Blood_Group">Blood Group</label>
                               <div class="dropdown-container">
                                  <select onchange="changeMe(this)" name="Blood_Group">
-                                    <option value="" selected="true" disabled="disabled"></option>
-                                    <option value="A+">A +ve</option>
-                                    <option value="A-">A -ve</option>
-                                    <option value="B+">B +ve</option>
-                                    <option value="B-">B -ve</option>
-                                    <option value="AB+">AB +ve</option>
-                                    <option value="AB-">AB -ve</option>
-                                    <option value="O+">O +ve</option>
-                                    <option value="O-">O -ve</option>
+                                    <option value=""></option>
+                                    <option value="A+"{% if profile.Blood_Group == 'A+' %}selected="selected"{% endif %}>A +ve</option>
+                                    <option value="A-"{% if profile.Blood_Group == 'A-' %}selected="selected"{% endif %}>A -ve</option>
+                                    <option value="B+"{% if profile.Blood_Group == 'B+' %}selected="selected"{% endif %}>B +ve</option>
+                                    <option value="B-"{% if profile.Blood_Group == 'B-' %}selected="selected"{% endif %}>B -ve</option>
+                                    <option value="AB+"{% if profile.Blood_Group == 'AB+' %}selected="selected"{% endif %}>AB +ve</option>
+                                    <option value="AB-"{% if profile.Blood_Group == 'AB-' %}selected="selected"{% endif %}>AB -ve</option>
+                                    <option value="O+"{% if profile.Blood_Group == 'O+' %}selected="selected"{% endif %}>O +ve</option>
+                                    <option value="O+"{% if profile.Blood_Group == 'O-' %}selected="selected"{% endif %}>O -ve</option>
                                  </select>
                                  <div class="select-icon">
                                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -90,9 +95,9 @@
                               <label for="Smoke">Do you smoke?</label>
                               <div class="dropdown-container">
                                  <select onchange="changeMe(this)" name="Smoke">
-                                    <option value="" selected="true" disabled="disabled"></option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
+                                    <option value=""></option>
+                                    <option value="Yes" {% if profile.Smoke == 'Yes' %}selected="selected"{% endif %}>Yes</option>
+                                    <option value="No" {% if profile.Smoke == 'No' %}selected="selected"{% endif %}>No</option>
                                  </select>
                                  <div class="select-icon">
                                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -105,10 +110,10 @@
                               <label for="Alcohol">Do you consume alcohol?</label>
                               <div class="dropdown-container">
                                  <select onchange="changeMe(this)" name="Alcohol" >
-                                    <option value="" selected="true" disabled="disabled"></option>
-                                    <option value="Frequently">Frequently</option>
-                                    <option value="Socially">Socially</option>
-                                    <option value="No">No</option>
+                                    <option value=""></option>
+                                    <option value="Frequently" {% if profile.Alcohol == 'Frequently' %}selected="selected"{% endif %}>Frequently</option>
+                                    <option value="Socially" {% if profile.Alcohol == 'Socially' %}selected="selected"{% endif %}>Socially</option>
+                                    <option value="No" {% if profile.Alcohol == 'No' %}selected="selected"{% endif %}>No</option>
                                  </select>
                                  <div class="select-icon">
                                     <i class="fa fa-chevron-down" aria-hidden="true"></i>
@@ -122,16 +127,18 @@
                                   <div class="col-md-6">
                            <div class="form-group">
                               <label for="allergy">Allergy</label>
-                              <textarea name="Allergy" id="allergy-details" class="form-control" cols="20" rows="10" placeholder="Please describe allergies or sensitivities, if any."></textarea>
+                              <textarea name="Allergy" id="allergy-details" class="form-control" cols="20" rows="10" placeholder="Please describe allergies or sensitivities, if any.">{{ profile.Allergy }}</textarea>
                            </div>
                         </div>
                         <div class="col-md-6">
                            <div class="form-group">
                               <label for="Medication">Current medications</label>
-                              <textarea  class="form-control" cols="20" rows="10" name="Medication" placeholder="Please describe your current medications."></textarea>
+                              <textarea  class="form-control" cols="20" rows="10" name="Medication"  placeholder="Please describe your current medications.">{{ profile.Medication }}</textarea>
                            </div>
                         </div>
                      </div>
+                     {% endfor %}
+
                      <button type="submit" value="Profile" class="btn  btn-primary submit-btn">Submit</button>
                   </form>
                </div>
@@ -146,10 +153,16 @@
       <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
       <script src="{% static 'js/custom.js' %}"></script>
+
       <script>
             function changeMe(sel){
    sel.style.color = "#000";              
 }
-      </script>
-   </body>
+setTimeout(function() {
+
+    $('#alert-message').fadeOut('slow');
+  
+  }, 3000);
+</script>
+</body>
 </html>

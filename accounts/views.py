@@ -9,6 +9,8 @@ from django.core.mail import send_mail
 from django.utils.encoding import force_bytes, force_text
 from .models import Singup, city, Profile
 from django.utils.crypto import get_random_string
+from django.contrib.auth.decorators import login_required
+
 
 # Create your views here.
 
@@ -110,6 +112,7 @@ def login(request):
         return render(request, 'accounts/login.html')
 
 
+# @login_required(login_url="login")
 def profile(request):
     if request.method == "POST":
         DOB = request.POST['DOB']
@@ -124,8 +127,12 @@ def profile(request):
         print(user_id)
         u = Profile.objects.filter(user_id=request.user.id).update(
             DOB=DOB, Height=Height, Weight=Weight, Smoke=Smoke, Alcohol=Alcohol, Allergy=Allergy, Medication=Medication, Blood_Group=Blood_Group)
-        return HttpResponse('thanks')
+        messages.success(
+            request, 'your profile has successfully  updated')
+
+        return redirect('profile')
 
     else:
 
-        return render(request, 'accounts/profile.html')
+        profile = Profile.objects.filter(user_id=request.user.id)
+        return render(request, 'accounts/profile.html', {'profile': profile})
