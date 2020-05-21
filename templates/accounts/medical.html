@@ -1,0 +1,155 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+      <link href="{% static 'css/main-style.css' %}" rel="stylesheet">
+      <title>Europ Healthcare</title>
+   </head>
+   <body class="no-overflow">
+      <div class="main-div">
+         <header>
+                 <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+               <div class="navbar-header">
+                  <div class="logos">
+                     <div class="logo-1"><a href="#"><img src="{% static 'img/home-care.svg' %}" alt="home-care-logo" class="img-responsive"></a></div>
+                     <div class="logo-2"><a href="#"><img src="{% static 'img/logo.svg' %}" alt="europ-logo" class="img-responsive"></a></div>
+                  </div>
+               </div>
+            </div>
+         </nav>
+         </header>
+    
+         <div class="container">
+            <div class="medical-detail-main">
+               <div class="medical-detail-info clearfix">
+                  <figure>
+                     <img src="{% static 'img/female.png' %}" class="img-responsive" alt="female">
+                     <img src="{% static 'img/male.png' %}" class="img-responsive hide" alt="male">
+                     <img src="{% static 'img/other.png' %}" class="img-responsive hide" alt="other">
+                  </figure>
+                  <h3>Please provide your personal and medical details.</h3>
+               </div>
+               <div class="medical-details-form">
+                  <form class="form-new">
+                     <div class="skip-link  pull-right">
+                        <a href="#">Skip</a>
+                     </div>
+                     <div class="row">
+                        <div class="col-md-4 col-xs-12">
+                           <label>Date of Birth </label>
+                           <div class="form-group">
+                              <div id="datepicker" class="input-group date" data-date-format="mm-dd-yyyy">
+                                 <input class="form-control" type="text" readonly />
+                                 <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <div class="form-group">
+                              <label for="height">Height (in inches)</label>
+                              <input type="text" class="form-control" id="height">
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <div class="form-group">
+                              <label for="weight">Weight (in KG)</label>
+                              <input type="text" class="form-control" id="weight">
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <div class="form-group">
+                              <label>Blood Group</label>
+                              <div class="dropdown-container">
+                                 <select onchange="changeMe(this)">
+                                    <option value="" selected="true" disabled="disabled">&nbsp;</option>
+                                    <option value="1">A +ve</option>
+                                    <option value="2">A -ve</option>
+                                    <option value="3">B +ve</option>
+                                    <option value="4">B -ve</option>
+                                    <option value="5">AB +ve</option>
+                                    <option value="6">AB -ve</option>
+                                    <option value="7">O +ve</option>
+                                    <option value="8">O -ve</option>
+                                 </select>
+                                 <div class="select-icon">
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <div class="form-group">
+                              <label>Do you smoke?</label>
+                              <div class="dropdown-container">
+                                 <select onchange="changeMe(this)">
+                                    <option value="" selected="true" disabled="disabled">&nbsp;</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
+                                 </select>
+                                 <div class="select-icon">
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                        <div class="col-md-4 col-xs-12">
+                           <div class="form-group">
+                              <label>Do you consume alcohol?</label>
+                              <div class="dropdown-container">
+                                 <select onchange="changeMe(this)">
+                                    <option value="" selected="true" disabled="disabled">&nbsp;</option>
+                                    <option value="1">Frequently</option>
+                                    <option value="2">Socially</option>
+                                    <option value="3">No</option>
+                                 </select>
+                                 <div class="select-icon">
+                                    <i class="fa fa-chevron-down" aria-hidden="true"></i>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                 
+                     </div>
+                     <div class="row">
+                                  <div class="col-md-6">
+                           <div class="form-group">
+                              <label for="allergy">Allergy</label>
+                              <textarea name="allergy-details" id="allergy" class="form-control" cols="20" rows="10" placeholder="Please describe allergies or sensitivities, if any."></textarea>
+                           </div>
+                        </div>
+                        <div class="col-md-6">
+                           <div class="form-group">
+                              <label>Current medications</label>
+                              <textarea  class="form-control" cols="20" rows="10" placeholder="Please describe your current medications."></textarea>
+                           </div>
+                        </div>
+                     </div>
+                     <button type="button" class="btn  btn-primary submit-btn">Submit</button>
+                  </form>
+               </div>
+
+                 
+            </div>
+         </div>
+      </div>
+
+
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+      <script>
+            function changeMe(sel){
+   sel.style.color = "#000";              
+}
+      </script>
+   </body>
+</html>

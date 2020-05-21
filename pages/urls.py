@@ -6,7 +6,7 @@ urlpatterns = [
     path('prescription/', views.prescription, name='prescription'),
     path('privacy_policy/', views.privacy_policy, name='privacy_policy'),
     path('term_condition/', views.term_condition, name='term_condition'),
-
+    path('updnot/<int:notification_id>', views.update_noti, name='update_noti'),
 
 
 
