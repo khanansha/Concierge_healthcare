@@ -142,6 +142,7 @@ def profile(request):
 
 
 def manageprofile(request):
+
     if request.method == "POST":
         # Get form values
         first_name = request.POST['first_name']
@@ -168,8 +169,7 @@ def manageprofile(request):
         #old = db_oldemail[0].email
         # print(old)
         # print(db_oldemail)
-        print("DB")
-
+        # print("DB")
         oldemail = request.user.email
         print(email)
         # print(oldemail)
@@ -213,7 +213,7 @@ def manageprofile(request):
 
                 profile = Profile.objects.filter(user_id=request.user.id).update(
                     DOB=DOB, Height=Height, Weight=Weight, Smoke=Smoke, Alcohol=Alcohol, Allergy=Allergy, Medication=Medication, Blood_Group=Blood_Group)
-                return redirect(manageprofile)
+                return redirect('manageprofile')
 
                 user = auth.authenticate(
                     username=username, password=request.user.password)

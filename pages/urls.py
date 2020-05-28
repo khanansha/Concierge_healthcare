@@ -7,7 +7,9 @@ urlpatterns = [
     path('privacy_policy/', views.privacy_policy, name='privacy_policy'),
     path('term_condition/', views.term_condition, name='term_condition'),
     path('updnot/<int:notification_id>', views.update_noti, name='update_noti'),
-
-
+    path('blogindex/', views.blogindex, name='blogindex'),
+    path('category/<int:category_id>', views.category, name='category'),
+    path('blog_inner/<int:blog_id>', views.blog_inner, name='blog_inner'),
+    path('faq/', views.faq, name='faq'),
 
 ]

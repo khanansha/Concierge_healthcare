@@ -1,6 +1,6 @@
 from django.http import HttpResponse
 from django.shortcuts import render
-from.models import Notification
+from.models import Notification, Category, blog
 
 # Create your views here.
 
@@ -30,3 +30,39 @@ def update_noti(request, notification_id):
     q = Notification.objects.filter(id=notification_id).update(unread=0)
     return HttpResponse("this is a message")
 
+
+def blogindex(request):
+    category = Category.objects.all()
+    context = {
+        'category': category,
+    }
+
+    return render(request, 'pages/blogindex.html', context)
+
+
+def category(request, category_id):
+    category = Category.objects.all()
+    blogs = blog.objects.filter(category_id=category_id)
+    context = {
+        'category': category,
+        'blogs': blogs,
+    }
+
+    return render(request, 'pages/blog.html', context)
+
+
+def blog_inner(request, blog_id):
+    blogs = blog.objects.order_by('-created_at')[:3]
+    blogdetail = blog.objects.filter(id=blog_id)
+    category = Category.objects.all()
+
+    context = {
+        'blogdetail': blogdetail,
+        'category': category,
+        'blogs': blogs,
+    }
+    return render(request, 'pages/blog_inner.html', context)
+
+
+def faq(request):
+    return render(request, 'pages/faq.html')
