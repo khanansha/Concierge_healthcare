@@ -59,7 +59,7 @@ h1 {
   font-weight: 500!important;
 }
 h2{
-  font-size: 24px!important;
+  font-size: 36px!important;
   font-weight: 500!important;
 }
 h3{
@@ -97,11 +97,11 @@ h6{
   background-color: #fff;
   border: 1px solid #ef3e42;
   border-radius: 0;
-  display: block;
-  max-width: 130px;
-  padding: 10px 20px;
-  width: 100%;
   color:#ef3e42;
+}
+
+.meet-experts-home .btn-primary,.blog-home .btn-primary{
+  margin: 30px auto;
 }
 
 .btn-primary{
@@ -137,6 +137,11 @@ h6{
   color: #ccc;
   border: none;
   border-bottom: 1px solid #ccc;
+}
+
+.bold{
+  color: #212120;
+  font-weight: 700 !important;
 }
 /* Hide the browser's default checkbox */
 .remember span{
@@ -200,24 +205,69 @@ h6{
   -ms-transform: rotate(45deg);
   transform: rotate(45deg);
 }  
-.modal-fixed{
+.modal-fixed,.modal-bigger,.modal-biggest{
   width: 500px;
   margin: auto;
   max-width: 90%;
   text-align: center;
+  top: 20%;
 }
-.modal-fixed .modal-dialog{
+.modal-fixed h3,.modal-bigger h3,.modal-biggest h3{
+  font-size: 18px !important;
+}
+.modal-bigger{
+  width: 800px;
+}
+.modal-biggest{
+  width: 800px;
+  top: 10%;
+}
+.modal-fixed .modal-dialog,.modal-bigger .modal-dialog,.modal-biggest .modal-dialog{
   max-width: 100%;
 }
-.modal-fixed .modal-body {
+.modal-fixed .modal-body,.modal-bigger .modal-body {
   padding: 50px 60px;
   min-height: 350px;
 }
-.modal-fixed .modal-content{
+.modal-fixed .modal-body, .modal-bigger .modal-body {
+  padding: 80px 60px 40px;
+}
+.modal-fixed .modal-content,.modal-bigger .modal-content,.modal-biggest .modal-content{
   border: none;
   box-shadow: none !important;
 }
+.modal-bigger .modal-content,.modal-biggest .modal-content{
+  border-radius: 0;
+}
+.modal-bigger .modal-content .btn-primary {
+  margin: 50px auto 0;
+}
+.modal-bigger .modal-content textarea.form-control {
+  resize: none;
+  border-radius: 0;
+}
 
+.modal-biggest .modal-content .btn-primary {
+  max-width: 200px;
+  margin: 50px 10px;
+  display: inline-block;
+}
+
+.modal-biggest .modal-content figure{
+  background: url(../img/covid-risk.jpg) no-repeat center center;
+  background-size: cover;
+  min-height: 315px;
+}
+
+.modal-biggest .modal-body {
+  padding: 0;
+}
+.modal-biggest .modal-body h3{
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
 .modal.prescription-modal{
   width: 600px;
   margin: auto;
@@ -229,6 +279,10 @@ h6{
 }
 .modal.prescription-modal embed{
   border: 2px solid #000;
+}
+
+.modal-text h3:nth-child(2) {
+ margin-bottom: 0;
 }
 
 .dropdown-container{
@@ -307,6 +361,7 @@ h6{
 }
 .grey-bg{
   background-color: #fafbfb;
+  padding: 50px 0;
 }
 /*common css*/
 
@@ -414,7 +469,7 @@ textarea.form-control::placeholder {
 .form-login.reset-form {
   padding: 135px 10px 135px;
 }
-.login-form-new input,.forgotpassword-email input,.signup-form-new input,.form-new input{
+.login-form-new input,.forgotpassword-email input,.signup-form-new input,.form-new input,.change-password-form input{
   background-color: transparent;
   border: none;
   border-bottom: 1px solid #ccc;
@@ -518,13 +573,16 @@ input.error {
 #otp form .resend-otp{
   margin: 15px 0;
 }
-#verification-otp h3{
+.modal-fixed h3,.img-dimension h3{
   font-weight: 300 !important;
 }
-#verification-otp figure{
+.img-dimension figure,.modal-fixed figure{
   width: 100%;
   max-width: 50px;
   margin: 50px auto;
+}
+.password-modal figure{
+  margin: 0 auto 50px;
 }
 select.homecare_select {
 color: #555;
@@ -808,17 +866,22 @@ footer .footer-two .footer-link.text-right a:after {
 .prescriptions  .prescription-division{
   border-bottom: 1px solid #ddd;
 }
- .modal.prescription-modal .close{
+.modal.prescription-modal .close,.modal.img-dimension .close,.modal.modal-biggest .close{
   background-color: #000;
-  padding: 2px 11px;
+  padding: 2px 9px;
   border-radius: 50%;
   opacity: 1;
   color: #fff;
   font-weight: 300;
-  font-size: 32px;
+  font-size: 24px;
   position: absolute;
   right: 0px;
   top: -22px;
+  z-index: 99;
+}
+.modal.prescription-modal .close, .modal.img-dimension .close, .modal.modal-biggest .close {
+  right: -1px;
+  top: -9px;
 }
 #homecare_pagination .current {
   background-color: #428bca;
@@ -832,6 +895,20 @@ footer .footer-two .footer-link.text-right a:after {
 }
 .profile-main .signup-form-new h3,.profile-main .form-medical-details h3{
   margin-bottom: 50px;
+}
+.height-field ,.weight-field {
+  position: relative;
+}
+.height-field input{
+  padding: 0 80px 0 0;
+}
+.weight-field input{
+  padding: 0 40px 0 0;
+}
+.height-field span,.weight-field span{
+  position: absolute;
+  bottom: 6px;
+  right: 0;
 }
 /*profile*/
 /*blog*/
@@ -870,7 +947,7 @@ footer .footer-two .footer-link.text-right a:after {
   background-color: transparent;
 }
 
-.blog-tab-section .blog-text h3{
+.blog-tab-section .blog-text h3,.blog-home .blog-text h3{
   min-height: 35px;
 }
 
@@ -951,26 +1028,43 @@ display:none;
   margin-top: -20px;  
   background-color: #fafbfb;
   width: auto; 
-  height: 70px;
+  max-height: 120px;
 }
 .expert_bio_wrap p{
-  width: 73%;
+  width: 64%;
   margin: 0 auto;
+  padding-bottom: 20px;
 }
 
-.expert-img{
-  width: 100px;
-  height: 100px;
+.expert-img,.home-expert-img{
+  width: 150px;
+  height: 150px;
+  margin: 0 auto;
+  border: 1px solid transparent;
+  background-image: url(../img/fitness-sir.png);
   border-radius: 100%;
-  border: 1px solid;
-}
-
-.expert-img {
-  background-image: url("../img/female.png");
-  border-radius: 100%;
-  background-position: center;
+  background-position: -25px -10px;
   background-repeat: no-repeat;
 }
+.details-tab:nth-child(2) .expert-img{
+  background-image: url(../img/dieter.png);
+}
+.details-tab:nth-child(3) .expert-img{
+  background-image: url(../img/celebrity-chef.png);
+}
+.details-tab:nth-child(4) .expert-img{
+  background-image: url(../img/psycologist.png);
+}
+.details-tab:nth-child(5) .expert-img{
+  background-image: url(../img/nutritonist.png);
+}
+.details-tab:nth-child(6) .expert-img{
+  background-image: url(../img/doctor.png);
+}
+.details-tab:nth-child(7) .expert-img{
+  background-image: url(../img/desai.png);
+}
+
 
 .expert-details{ 
   display: flex;
@@ -984,14 +1078,36 @@ display:none;
   display: inline-block;
   vertical-align: middle;
 }
-.expert-tab-section .nav-tabs,.expert-tab-section .nav-tabs>li:first-child>a{
+.expert-tab-section .nav-tabs{
   border:none;
 }
-.expert-tab-section .nav-tabs>li>a{
-  border: 1px solid #414042;
-  border-radius: 0;
+.expert-tab-section .nav-tabs>li:first-child>a{
+  border: 2px solid transparent;
 }
-
+.expert-tab-section .nav-tabs>li>a{
+  max-width: 180px;
+  width: 100%;
+  height: auto;
+  border: 2px solid #f7f1ee;
+  border-radius: 5px;
+  display: block;
+  padding: 5px 10px;
+}
+.expert-tab-section .nav>li>a:hover, .expert-tab-section .nav>li>a:focus{
+  background-color:#f7f1ee;
+  border: 2px solid transparent;
+}
+.expert-tab-section .nav-tabs>li>a img{
+  max-width: 20px;
+  width: 100%;
+  margin: 0 5px;
+  display: inline-block;
+  vertical-align: middle;
+}
+.expert-tab-section .nav-tabs>li>a span{
+  display: inline-block;
+  vertical-align: middle;
+}
 .expert-text{
   margin: 0 20px;
 }
@@ -1073,7 +1189,151 @@ display:none;
 .home-banner-text .search-bar input::placeholder {
   color:#fff;
 }
+.ask-doctor-img,.covid-symptoms-img{
+  padding: 40px 0 20px;
+}
+.dont-ignore-health img{   
+  max-width: 100%;
+  margin: 0 auto;
+}
+.coming-soon-section,.blog-home-section,.available-services{
+  padding: 50px 0;
+}
+.coming-soon-img,.coming-soon-services {
+  padding: 20px 0 10px;
+}
+.coming-soon-img  figcaption{
+  padding: 15px 0 10px;
+  cursor: default;
+}
+.blog-home .carousel img{
+  width: 100%;
+}
+.blog-home .slidings{
+  display: inline-block;
+  margin: 10px;
+}
+.blog-home .carousel img {
+  width: 100%;
+}
+
+.blog-home .slidings {
+  display: inline-block;
+  margin: 10px;
+  width: 360px;
+}
+.available-service-section .list-available-services{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  margin: 40px 0 0;
+}
+.available-service-section .service {
+  max-width: 200px;
+  width: 100%;
+  text-align: center;
+  margin: 20px 5px;
+}
+.available-service-section .service a{
+  display: block;
+  text-align: center;
+}
+.available-service-section .service a figure {
+  width: 50px;
+  margin: 0 auto;
+  min-height: 65px;
+}
+.available-service-section .service a span{
+  display: block;
+  max-width: 120px;
+  width: 100%;
+  margin: 0 auto;
+  
+}
+.home-expert-info p,.home-expert-info span{
+  text-align: center;
+  display: block;
+  margin: 5px;
+}
+
+.home-expert-img{
+  background-image: url(../img/celebrity-chef.png);
+  margin: 20px auto;
+}
+
+.list-of-experts .list-of-experts-details:nth-child(1) .home-expert-img{
+  background-image: url(../img/desai.png);
+}
+.list-of-experts .list-of-experts-details:nth-child(2) .home-expert-img{
+  background-image: url(../img/dieter.png);
+}
+.list-of-experts .list-of-experts-details:nth-child(4) .home-expert-img{
+  background-image: url(../img/fitness-sir.png);
+}
+
 /*home*/
+/*change password*/
+.change-password-form .tooltip-info {
+  max-width: 250px;
+  width: 100%;
+  position: absolute;
+  top: 70px;
+  left: 0;
+  z-index: 9;
+  background-color: #f7f1ee;
+  padding: 20px;
+  font-size: 12px;
+  -webkit-box-shadow: -1px 1px 8px -2px #f2f2f2;
+  -moz-box-shadow: -1px 1px 8px -2px #f2f2f2;
+  box-shadow: -1px 1px 8px -2px #f2f2f2;
+  transition: all 0.5s ease;
+  border-radius: 5px;
+  display: none;
+
+}
+.change-password-form .tooltip{
+  position: unset;
+  opacity: 1;
+}
+.change-password-form .check-points li {
+  position: relative;
+  padding-left: 20px;
+}
+.change-password-form .check-points li:after {
+  content: '';
+  width: 5px;
+  height: 10px;
+  position: absolute;
+  top: 3px;
+  left: 3px;
+  border: solid #58595b;
+  border-width: 0 1px 1px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
+.change-password-form .tooltip-info:after {
+  content: " ";
+  width: 0;
+  height: 0;
+  position: absolute;
+  top: -9px;
+  left: 50px;
+  margin-left: 0;
+  border-left: solid transparent 10px;
+  border-right: solid transparent 10px;
+  border-bottom: solid #f7f1ee 10px;
+}
+.change-password{
+  width: 500px;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+.change-password-form .form-group{
+  margin: 20px 0;
+}
+/*change password*/
 /*1366*/
 @media only screen  and (max-width : 1366px){
 /*login page*/
@@ -1095,13 +1355,15 @@ display:none;
 }
 /*login page*/
 /*blog*/
-.blog-tab-section .container{
+.blog-tab-section .container,.change-password-section .container,.expert-tab-section .container{
   width: auto;
 }
-.blog-tab-section .nav-tabs>li {
+.blog-tab-section .nav-tabs>li,.expert-tab-section .nav-tabs>li {
   margin: 25px 15px;
 }
 /*blog*/
+/*change password*/
+
 }
 
 /*1024*/
@@ -1127,7 +1389,7 @@ display:none;
 }
 /*inner header*/
 /*blog*/
-.blog-tab-section .nav-tabs>li {
+.blog-tab-section .nav-tabs>li,.expert-tab-section .nav-tabs>li {
   margin: 25px 5px;
 }
 .blog-info figure {
@@ -1136,6 +1398,11 @@ display:none;
 }
 
 /*blog*/
+/*home*/
+.blog-home .slidings {
+  width: 290px;
+}
+/*home*/
 }
 
 
@@ -1244,7 +1511,7 @@ body.login-page{
   white-space: nowrap;
   overflow-y: hidden;
 }
-.blog-tab-section .nav-tabs>li {
+.blog-tab-section .nav-tabs>li,.expert-tab-section .nav-tabs>li {
   float: none;
   display: inline-block;
 }
@@ -1277,7 +1544,24 @@ body.login-page{
   background-size: cover;
   min-height: 800px;
 }
+
 /*home*/
+
+/*expert*/
+.expert-details,.expert-text, .expert-img,.expert-text p{
+  display: block;
+  text-align: center;
+}
+.expert-details .view-btn{
+  float: none !important;
+  margin: 20px auto;
+}
+.expert_bio_wrap p {
+  width: auto;
+  margin: 0 auto;
+  padding: 0 20px 20px;
+}
+/*expert*/
 }
 
 /*823*/
@@ -1287,6 +1571,13 @@ body.login-page{
   margin: 135px 5px 50px;
 }
 /*inner page header*/
+
+/*home*/
+.blog-home .blog-text h3 {
+  text-align: left;
+  min-height: 45px;
+}
+/*home*/
 }
 
 
@@ -1322,12 +1613,54 @@ body.login-page{
 .home-banner-text .search-bar {
   width: 360px;
 }
+
 /*home*/
 }
 
 
 /*767*/
 @media only screen  and (max-width : 767px){
+/*common*/
+h1 {
+  font-size: 24px!important;
+}
+h2{
+  font-size: 18px!important;
+}
+h3{
+  font-size: 16px!important;
+}
+h4{
+  font-size: 14px!important;
+}
+h5{
+  font-size: 12px !important;
+}
+h6{
+  font-size: 10px !important;
+}
+label,p,a,a:hover,a:focus{
+  font-size: 12px !important;
+}
+.modal-bigger .modal-body {
+  padding: 40px 30px 40px;
+}
+.modal.prescription-modal .close, .modal.img-dimension .close{
+  right: -9px;
+}
+.modal.img-dimension .close {
+  top: -8px;
+}
+.modal-biggest .modal-content .btn-sets{
+  padding: 30px 0;
+}
+.modal-biggest .modal-content .btn-primary {
+  margin: 20px 0px;
+}
+.modal-biggest .modal-body h3 {
+  top: 7%;
+}
+/*commmon */
 /*signup*/
 #otp form .resend-otp {
   margin: 15px 0px;
@@ -1452,16 +1785,49 @@ footer .footer-two .footer-link.text-right a:after{
   font-size: 16px;
 }
 .home-banner-text .dropdown-container {
-    max-width: 153px;
-    margin: 0 10px 0 0;
-    width: 100%;
+  max-width: 153px;
+  margin: 0 10px 0 0;
+  width: 100%;
 }
 .home-banner-text .search-bar {
-    max-width: 175px;
-    margin: 0;
-    width: 100%;
+  max-width: 175px;
+  margin: 0;
+  width: 100%;
+}
+ .blog-home .blog-text h3 {
+  text-align: left;
+  min-height: 50px;
+}
+.blog-home .compress-text {
+  width: 120px;
+  text-align: center;
+}
+.available-service-section .service {
+  max-width: 100px;
+}
+.home-banner-text .search-bar input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 12px;
+}
+.home-banner-text .search-bar input::-moz-placeholder { /* Firefox 19+ */
+   font-size: 12px;
+}
+.home-banner-text .search-bar input:-ms-input-placeholder { /* IE 10+ */
+   font-size: 12px;
+}
+.home-banner-text .search-bar input:-moz-placeholder { /* Firefox 18- */
+  font-size: 12px;
+}
+.home-banner-text .dropdown-container select,.home-banner-text .search-bar input {
+  font-size: 12px;
 }
 /*home*/
+/*change password*/
+.change-password {
+  width: auto;
+  margin: 0 auto;
+  padding: 50px 0;
+}
+/*change password*/
 }
 
 
@@ -1500,6 +1866,17 @@ footer .footer-two .footer-link.text-right a:after{
   padding: 25px 20px;
 }
 /*faq*/
+/*HOME*/
+.blog-home .compress-text {
+  width: 100px;
+}
+.blog-home .blog-text h3 {
+  min-height: 70px;
+}
+.home-banner-text .dropdown-container {
+  max-width: 150px;
+}
+/*HOME*/
 }
 
 
@@ -1511,6 +1888,37 @@ footer .footer-two .footer-link.text-right a:after{
 #otp form input {
   margin: 0 3px;
 }
+/*home*/
+.home-banner-text .search-bar {
+  max-width: 160px;
+}
+.home-banner-text .dropdown-container {
+  max-width: 125px;
+}
+.home-banner-text .search-bar input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 10px;
+}
+.home-banner-text .search-bar input::-moz-placeholder { /* Firefox 19+ */
+   font-size: 10px;
+}
+.home-banner-text .search-bar input:-ms-input-placeholder { /* IE 10+ */
+   font-size: 10px;
+}
+.home-banner-text .search-bar input:-moz-placeholder { /* Firefox 18- */
+  font-size: 10px;
+}
+.home-banner-text .dropdown-container select,.home-banner-text .search-bar input {
+  font-size: 10px;
+}
+.home-banner-text .search-bar span,.home-banner-text .dropdown-container .select-icon {
+  font-size: 14px;
+}
+.expert-img, .home-expert-img {
+  width: 135px;
+  height: 135px;
+  background-position: -30px -10px;
+}
+/*home*/
 }
 
 

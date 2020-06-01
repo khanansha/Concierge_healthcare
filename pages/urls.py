@@ -11,5 +11,7 @@ urlpatterns = [
     path('category/<int:category_id>', views.category, name='category'),
     path('blog_inner/<int:blog_id>', views.blog_inner, name='blog_inner'),
     path('faq/', views.faq, name='faq'),
+    path('home/', views.home, name='home'),
+
 
 ]

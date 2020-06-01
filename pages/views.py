@@ -1,6 +1,8 @@
+from django.core.paginator import EmptyPage, PageNotAnInteger, Paginator
 from django.http import HttpResponse
 from django.shortcuts import render
 from.models import Notification, Category, blog
+
 
 # Create your views here.
 
@@ -33,8 +35,12 @@ def update_noti(request, notification_id):
 
 def blogindex(request):
     category = Category.objects.all()
+
+    blogs = blog.objects.order_by('-created_at')[:9]
+
     context = {
         'category': category,
+        'blogs': blogs,
     }
 
     return render(request, 'pages/blogindex.html', context)
@@ -43,9 +49,13 @@ def blogindex(request):
 def category(request, category_id):
     category = Category.objects.all()
     blogs = blog.objects.filter(category_id=category_id)
+    paginator = Paginator(blogs, 3)
+    page = request.GET.get('page')
+    paged_blog = paginator.get_page(page)
     context = {
         'category': category,
-        'blogs': blogs,
+        'blogs': paged_blog,
+        'url_category': category_id
     }
 
     return render(request, 'pages/blog.html', context)
@@ -66,3 +76,12 @@ def blog_inner(request, blog_id):
 
 def faq(request):
     return render(request, 'pages/faq.html')
+
+
+def home(request):
+    blogs = blog.objects.order_by('-created_at')[:3]
+    context = {
+        'blogs': blogs,
+    }
+
+    return render(request, 'pages/home.html', context)

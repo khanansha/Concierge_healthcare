@@ -1,0 +1,576 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+      <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet">
+      <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.css" rel="stylesheet" type="text/css" />
+      <link href="https://fonts.googleapis.com/css2?family=Source+Sans+Pro:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700;1,900&display=swap" rel="stylesheet">
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.css"/>
+      <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick-theme.css"/>
+      <link href="{% static 'css/main-style.css' %}" rel="stylesheet">
+      <title>Europ Healthcare</title>
+   </head>
+   <body>
+      <div class="main-div">
+         <header>
+            <div class="inner-page-header">
+               <nav class="navbar navbar-inverse navbar-fixed-top">
+                  <div class="container-fluid">
+                     <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        </button>
+                        <div class="logos">
+                           <h1 class="hidden-lg hidden-md hidden-sm hidden-xs">Europ Healthcare</h1>
+                           <div class="logo-1"><a href="#"><img src="{% static 'img/home-care.svg' %}" alt="home-care-logo" class="img-responsive"></a></div>
+                           <div class="logo-2"><a href="#"><img src="{% static 'img/logo.svg' %}" alt="europ-logo" class="img-responsive"></a></div>
+                        </div>
+                     </div>
+                     <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav navbar-right">
+                           <li>
+                              <a href="#"><span class="hidden-lg hidden-md hidden-sm">Notifications</span><img src="{% static 'img/notifications.svg' %}" class="img-responsive hidden-xs" alt="notifications"></a>
+                           </li>
+                           <li>
+                              <ul class=" hidden-lg hidden-md hidden-sm">
+                                 <li><a href="#">My profile</a></li>
+                                 <li><a href="#">My address</a></li>
+                                 <li><a href="#">My bookings</a></li>
+                                 <li><a href="#">Members benefits</a></li>
+                                 <li><a href="#">Change Password</a></li>
+                                 <li><a href="#">Log out</a></li>
+                              </ul>
+                              <div class="dropdown hidden-xs">
+                                 <button class=" dropdown-toggle" type="button" data-toggle="dropdown">
+                                    <span class="hidden-lg hidden-md hidden-sm hidden-xs">Profile</span>
+                                    <figure>
+                                       <img src="{% static 'img/female.png' %}" class="img-responsive" alt="female">
+                                       <img src="{% static 'img/male.png' %}" class="img-responsive hide" alt="male">
+                                       <img src="{% static 'img/other.png' %}" class="img-responsive hide" alt="other">
+                                    </figure>
+                                 </button>
+                                 <ul class="dropdown-menu">
+                                    <li><a href="#">My profile</a></li>
+                                    <li><a href="#">My address</a></li>
+                                    <li><a href="#">My bookings</a></li>
+                                    <li><a href="#">Members benefits</a></li>
+                                    <li><a href="#">Change Password</a></li>
+                                    <li><a href="#">Log out</a></li>
+                                 </ul>
+                              </div>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+               </nav>
+            </div>
+         </header>
+         <main>
+            <div class="home-page-main">
+               <div class="home-banner">
+                  <div class="container">
+                     <div class="home-banner-text">
+                        <h2>You live, we care.</h2>
+                        <div class="city-service-dropdown-searchbar">
+                           <form action="#">
+                              <div class="form-group">
+                                 <div class="dropdown-container">
+                                    <select onchange="changeMe(this)">
+                                       <option value="" selected="true" disabled="disabled">Select City</option>
+                                       <option value="1"> Adilabad</option>
+                                       <option value="2">Agra</option>
+                                       <option value="3">Ahmedabad</option>
+                                       <option value="4">Ahmednagar</option>
+                                       <option value="5">Aizawl</option>
+                                       <option value="6">Ajitgarh (Mohali)</option>
+                                       <option value="7">Ajmer</option>
+                                       <option value="8">Akola</option>
+                                    </select>
+                                    <div class="select-icon">
+                                       <i class="fa fa-map-marker" aria-hidden="true"></i>
+                                    </div>
+                                 </div>
+                                 <div class="search-bar">
+                                    <span><i class="fa fa-search" aria-hidden="true"></i></span>
+                                    <input class="form-control" id="search" type="text" placeholder="Search for a service">
+                                 </div>
+                              </div>
+                           </form>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="available-services">
+                  <div class="container">
+                     <div class="available-service-section">
+                        <h3 class="text-center">Do not ignore your health concerns</h3>
+                        <div class="list-available-services">
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/covid.svg' %}" class="img-responsive" alt="covid">
+                                 </figure>
+                                 <span>Covid-19 symptoms checker</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/online-medical.svg' %}" class="img-responsive" alt="online-medical">
+                                 </figure>
+                                 <span>Online
+                                 medical consultation</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/e-prescription.svg' %}" class="img-responsive" alt="e-prescription">
+                                 </figure>
+                                 <span>Medical
+                                 E-prescriptions</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/medicine-delivery.svg' %}" class="img-responsive" alt="medicine-delivery">
+                                 </figure>
+                                 <span>Delivery of
+                                 medicines</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/pschycological-assistance.svg' %}" class="img-responsive" alt="">
+                                 </figure>
+                                 <span>Psychological
+                                 assistance</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/diet-nutrition.svg' %}" class="img-responsive" alt="">
+                                 </figure>
+                                 <span>Diet &
+                                 nutrition sessions</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/fitness-session.svg' %}" class="img-responsive" alt="">
+                                 </figure>
+                                 <span>Exclusive
+                                 fitness sessions</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/cyber-assistance.svg' %}" class="img-responsive" alt="">
+                                 </figure>
+                                 <span>IT & cyber
+                                 assistance</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/fuel-delivery.svg' %}" class="img-responsive" alt="fuel-delivery">
+                                 </figure>
+                                 <span>Fuel delivery & 
+                                 battery jumpstart</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/car-service.svg' %}" class="img-responsive" alt="car-service">
+                                 </figure>
+                                 <span>Car
+                                 care service</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/gifts-flowers.svg' %}" class="img-responsive" alt="gifts-flowers">
+                                 </figure>
+                                 <span>Gift, flowers
+                                 & cake delivery</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/home-chef.svg' %}" class="img-responsive" alt="home-chef">
+                                 </figure>
+                                 <span>Personalised meal
+                                 by home chefs</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/fashion-consultation.svg' %}" class="img-responsive" alt="fashion-consultation">
+                                 </figure>
+                                 <span>Fashion stylist
+                                 consultation</span>
+                              </a>
+                           </div>
+                           <div class="service">
+                              <a href="#">
+                                 <figure>
+                                    <img src="{% static 'img/hobby-class.svg' %}" class="img-responsive" alt="hobby-class">
+                                 </figure>
+                                 <span>Hobby development
+                                 master class</span>
+                              </a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="dont-ignore-section grey-bg">
+                  <div class="container">
+                     <div class="dont-ignore-health">
+                        <h3 class="text-center">Do not ignore your health concerns</h3>
+                        <div class="row">
+                           <div class="col-md-6 col-sm-6 col-xs-6">
+                              <div class="covid-symptoms">
+                                 <div class="covid-symptoms-img">
+                                    <figure>
+                                       <img src="{% static 'img/covid-symtoms.jpg' %}" class="img-responsive" alt="covid-symtoms">
+                                    </figure>
+                                 </div>
+                                 <div class="covid-symptoms-text ">
+                                    <p class="text-center bold">Covid-19 symptoms checker</p>
+                                    <button type="button" class="btn  btn-primary">Check now</button>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="col-md-6 col-sm-6 col-xs-6">
+                              <div class="ask-doctor ">
+                                 <div class="ask-doctor-img">
+                                    <figure>
+                                       <img src="{% static 'img/ask-doctor.jpg' %}" class="img-responsive" alt="ask-doctor">
+                                    </figure>
+                                 </div>
+                                 <div class="ask-doctor-text ">
+                                    <p class="text-center bold">Ask our doctors a question</p>
+                                    <button type="button" class="btn  btn-primary ">Ask now</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="coming-soon-section">
+                  <div class="container">
+                     <div class="coming-soon">
+                        <h3 class="text-center">We are coming soon</h3>
+                        <div class="coming-soon-services">
+                           <div class="row">
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/home-healthcare.jpg' %}" class="img-responsive" alt="home-healthcares">
+                                          <figcaption class="bold">Home healthcare service</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/essential-delivery.jpg' %}" class="img-responsive" alt="essential-delivery">
+                                          <figcaption class="bold">Delivery of essential goods</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/groceries-delivery.jpg' %}" class="img-responsive" alt="groceries-delivery">
+                                          <figcaption class="bold">Delivery of groceries</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/home-diagonistics.jpg' %}" class="img-responsive" alt="home-diagonistics">
+                                          <figcaption class="bold"> Home diagnostics service</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/chauffer-service.jpg' %}" class="img-responsive" alt="chauffer-service">
+                                          <figcaption class="bold"> Chauffer service</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/repair-maintenance.jpg' %}" class="img-responsive" alt="repair-maintenance">
+                                          <figcaption class="bold"> Appliance repair & maintenace</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/pickup-drop-car.jpg' %}" class="img-responsive" alt="pickup-drop-car">
+                                          <figcaption class="bold"> Pick-up & drop for car servicing</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                              <div class="col-md-4 col-sm-6 col-xs-6">
+                                 <div class="coming-soon-items text-center">
+                                    <div class="coming-soon-img">
+                                       <figure>
+                                          <img src="{% static 'img/luxury-itemdelivery.jpg' %}" class="img-responsive" alt="luxury-itemdelivery">
+                                          <figcaption class="bold"> Sourcing of luxury items</figcaption>
+                                       </figure>
+                                    </div>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="meet-experts-home-section grey-bg">
+                  <div class="container">
+                     <div class="meet-experts-home">
+                        <h3 class="text-center">Meet our experts</h3>
+                        <button type="button" class="btn  btn-primary">See all experts</button>
+                        <div class="row list-of-experts">
+                           <div class="col-md-3 col-sm-6 col-xs-6 list-of-experts-details">
+                              <div class="home-expert-details">
+                                 <a href="#">
+                                    <div class="home-expert-img">
+                                       <figure></figure>
+                                    </div>
+                                    <div class="home-expert-info">
+                                       <p class="bold">Dr Deepak Desai</p>
+                                       <span>General surgeon</span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-sm-6 col-xs-6 list-of-experts-details">
+                              <div class="home-expert-details">
+                                 <a href="#">
+                                    <div class="home-expert-img">
+                                       <figure></figure>
+                                    </div>
+                                    <div class="home-expert-info">
+                                       <p class="bold">Anita Rai</p>
+                                       <span>Fashion stylist</span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-sm-6 col-xs-6 list-of-experts-details">
+                              <div class="home-expert-details">
+                                 <a href="#">
+                                    <div class="home-expert-img">
+                                       <figure></figure>
+                                    </div>
+                                    <div class="home-expert-info">
+                                       <p class="bold">Nihar Kaur</p>
+                                       <span>Celebrity chef</span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                           <div class="col-md-3 col-sm-6 col-xs-6 list-of-experts-details">
+                              <div class="home-expert-details">
+                                 <a href="#">
+                                    <div class="home-expert-img">
+                                       <figure></figure>
+                                    </div>
+                                    <div class="home-expert-info">
+                                       <p class="bold">Prasad Sawant</p>
+                                       <span>Fitness influencer</span>
+                                    </div>
+                                 </a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="blog-home-section">
+                  <div class="container">
+                     <div class="blog-home">
+                        <h3 class="text-center">Read articles from health experts</h3>
+                        <button type="button" class="btn  btn-primary">See all experts</button>
+                        <section>
+                           <div class="carousel">
+                            <div class="slidings">
+                                {% for blogs in blogs %}
+                                 <a href="{% url 'blogindex' %}">
+                                    <div class="blog-info">
+                                       <figure>
+                                          <img src="{{ blogs.banner_smail.url }}" class="img-responsive" alt="blog-img">
+                                       </figure>
+                                       <div class="blog-text">
+                                          <h3>{{ blogs.title }}</h3>
+                                          {% comment %} <p class="compress-text">Eating a healthy breakfast every day will give you more energy, help you 
+                                          </p> {% endcomment %}
+                                       </div>
+                                    </div>
+                                 </a>
+                                 {% if forloop.counter|divisibleby:1 %}
+                                    </div>
+                                    <div class="slidings">
+                                    {% endif %}
+                                 {% endfor %}
+                              </div>
+                           </div>
+                        </section>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </main>
+         <footer>
+            <div class="container">
+               <div class="footer-one">
+                  <div class="row">
+                     <div class="col-md-3">
+                        <div class="footer-link text-center">
+                           <a href="#" data-toggle="modal" data-target="#covid-risk">Program details</a>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="footer-link text-center">
+                           <a href="#" data-toggle="modal" data-target="#question-doctor">Homecare blogs</a>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="footer-link text-center">
+                           <a href="#" data-toggle="modal" data-target="#question-recieved">FAQs</a>
+                        </div>
+                     </div>
+                     <div class="col-md-3">
+                        <div class="footer-link text-center">
+                           <figure>
+                              <img src="{% static 'img/phone.svg' %}" class="img-responsive" alt="footer-phone">
+                           </figure>
+                           <a href="tel:+180000000">1800  00  000</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="footer-two">
+                  <div class="row">
+                     <div class="col-md-6 col-sm-6  col-xs-6">
+                        <div class="footer-link text-right">
+                           <a href="#">Terms and conditions </a>
+                        </div>
+                     </div>
+                     <div class="col-md-6 col-sm-6 col-xs-6">
+                        <div class="footer-link text-left">
+                           <a href="#">Privacy policy</a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </footer>
+         <!-- Modal -->
+         <div id="question-recieved" class="modal fade modal-fixed img-dimension" role="dialog">
+            <div class="modal-dialog">
+               <!-- Modal content-->
+               <div class="modal-content">
+                  <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <div class="modal-body">
+                     <figure>
+                        <img src="{% static 'img/click.svg' %}" class="img-responsive" alt="verification-click">
+                     </figure>
+                     <div>
+                        <h3>We have recieved your question. </h3>
+                        <h3>Our doctors will respond shortly.</h3>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+
+<!-- Modal -->
+<div id="question-doctor" class="modal fade modal-bigger img-dimension" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-body">
+           <textarea name="ask-doctor" id="ask-doctor" class="form-control" cols="20" rows="10" placeholder="Ask your any health related questions here and our 
+expert doctors will answer you."></textarea>
+        <button type="button" class="btn  btn-primary">Submit</button>
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+<!-- Modal -->
+<div id="covid-risk" class="modal fade modal-biggest" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      <div class="modal-body">
+        <h3>Are you at risk of COVID-19?</h3>
+        <figure>
+        </figure>
+           <div class="btn-sets">
+              <button type="button" class="btn  btn-primary">Check symptoms now</button>
+        <button type="button" class="btn  btn-primary view-btn">No, I’m good</button>
+           </div>
+       
+      </div>
+     
+    </div>
+
+  </div>
+</div>
+      </div>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+      <script src="https://cdn.jsdelivr.net/jquery.slick/1.6.0/slick.min.js"></script>
+      <script src="{% static 'js/custom.js' %}"></script>
+   </body>
+</html>

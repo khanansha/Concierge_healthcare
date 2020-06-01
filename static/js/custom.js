@@ -27,6 +27,30 @@ $(document).ready(function(){
         $(this).text("View more")
       }
   }); 
+
+  $(".tooltip").click(function(){
+      $(".tooltip-info").toggle();
+    });
+
+
+   $('.carousel').slick({
+    slidesToShow: 2.1,
+    slidesToScroll: 2.1,
+        mobileFirst: true,
+        arrows: false,
+        dots: false,
+        responsive: [
+            {
+                breakpoint: 992,
+                settings: 'unslick'
+            }
+        ]
+    });
+
+    $(window).on('resize', function() {
+        $('.carousel').slick('resize');
+    });
+
 });
 
 
